@@ -27,13 +27,14 @@ public class MerchHelper {
     private static void WhatToDo(int shirts) throws AWTException, IOException, URISyntaxException, InterruptedException {
         Robot robot = new Robot();
         Scanner reader = new Scanner(System.in);  // Reading from System.in
-        System.out.println("1: Hämta Tröjor, 2: Öppna Nya Tabs för Merch, 3: Ladda upp tröjor");
+        System.out.println("1: Hämta Tröjor, 2: Öppna Nya Tabs för Merch, 3: Ladda upp tröjor, 4: AI Process");
         int n = reader.nextInt(); // Scans the next token of the input as an int.
 
         switch (n){
             case 1:
+                int lineNumber = 0;
                 robot.delay(2000);
-                gatherTees();
+                gatherTees(lineNumber);
                 break;
             case 2:
                 robot.delay(2000);
@@ -43,10 +44,259 @@ public class MerchHelper {
                 robot.delay(2000);
                 uploadShirts(shirts);
                 break;
+            case 4:
+                robot.delay(2000);
+                aiProcess();
         }
 
         //once finished
         reader.close();
+
+    }
+
+    private static void aiProcess() throws AWTException {
+        int loopen = 0;
+        while (loopen < 50) {
+            Robot robot = new Robot();
+            //move to 1623 213
+            robot.delay(200);
+            robot.mouseMove(1623, 213);
+            //hold left click
+            robot.delay(200);
+            robot.mousePress(InputEvent.BUTTON1_MASK);
+            //drag into .ai program 537 570
+            robot.delay(200);
+            robot.mouseMove(539, 539); //537 547  541 539   539 539
+            robot.delay(200);
+            robot.mouseRelease(InputEvent.BUTTON1_MASK);
+            robot.delay(200);
+            //left click
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //hold left click
+            robot.delay(200);
+            rightClick();
+            robot.delay(1000);
+            robot.mouseMove(755, 643);
+            robot.delay(1000);
+            robot.mouseMove(788, 643);
+            robot.delay(1000);
+            robot.mouseMove(835, 746);
+            leftClick();
+            pressEnter();
+        /*robot.mousePress(InputEvent.BUTTON1_MASK);
+        robot.delay(200);
+        //drag to 426 425(corner)
+        robot.delay(200);
+        robot.mouseMove(426, 425);
+        //release left click
+        robot.delay(200);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+        robot.delay(200);
+        robot.mouseMove(423, 432);
+        leftClick();*/
+            //move to 446 445
+       /* robot.delay(500);
+        robot.mouseMove(446, 447);
+        robot.delay(2000);
+        //hold shift
+        robot.delay(2000);*/
+        /*robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.delay(2000);
+        //hold left click
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        //move to 729 670
+        robot.delay(2000);
+        robot.mouseMove(729, 670);
+        //release left click
+        robot.delay(2000);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+        robot.delay(2000);
+        robot.keyRelease(KeyEvent.VK_SHIFT);*/
+            //robot.delay(2000);
+            //move to 35 66
+            robot.delay(200);
+            robot.mouseMove(35, 66);
+            robot.delay(200);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //move to 82 478
+            robot.delay(200);
+            robot.mouseMove(82, 478);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //move to 783 609
+            robot.delay(200);
+            robot.mouseMove(783, 609);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //move to 732 861
+            robot.delay(200);
+            robot.mouseMove(732, 861);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //move to 245 708
+            robot.delay(200);
+            robot.mouseMove(245, 708);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //move to 248 777
+            robot.delay(200);
+            robot.mouseMove(248, 777);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //move to 377 810
+            robot.mouseMove(377, 810);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            robot.delay(200);
+            //press backspace 2 times
+            //pressBackspace();
+            // robot.delay(200);
+            //pressBackspace();
+            robot.delay(200);
+            //move to 1623 234
+            robot.mouseMove(1623, 234);
+            //rightclick
+            robot.delay(200);
+            rightClick();
+            robot.delay(200);
+            //move to rename file 1729 884
+            robot.mouseMove(1746, 919);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            //press ctrl c
+            robot.delay(200);
+            ctrlC();
+            robot.delay(200);
+            //move to 1621 222
+            robot.delay(200);
+            robot.mouseMove(1621, 222);
+            //leftclick
+            robot.delay(200);
+            leftClick();
+            //press delete
+            //pressDelete();
+            //press enter
+            //pressEnter();
+            //move to file name 791 568
+            robot.mouseMove(791, 568);
+            //leftclick
+            leftClick();
+            //press ctrl A
+            ctrlA();
+            //press sudda
+            //pressBackspace();
+            //press ctrl V
+            ctrlV();
+            //press enter
+            pressEnter();
+            //press enter
+            pressEnter();
+            robot.delay(10000);
+            //move to shirt to delete from AI
+            robot.mouseMove(532, 543);
+            leftClick();
+            pressDelete();
+            //delete from shirts(so we can automate it with a loop!)
+            robot.mouseMove(1609, 214);
+            leftClick();
+            pressDelete();
+            pressEnter();
+            loopen++;
+        }
+    }
+
+    private static void ctrlA() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_A);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_A);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+
+
+    }
+
+    private static void ctrlV() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+
+
+    }
+
+    private static void pressShift() throws AWTException {
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.delay(200);
+
+    }
+
+    private static void ctrlC() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_C);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_C);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+
+
+    }
+
+    private static void pressDelete() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_DELETE);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_DELETE);
+        robot.delay(200);
+    }
+
+    private static void pressBackspace() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.delay(200);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(200);
+
 
     }
 
@@ -59,7 +309,7 @@ public class MerchHelper {
             pressOpen();
             //klicka nästa tab 156 16
             robot.mouseMove(156,16);
-            robot.delay(300);
+            robot.delay(200;
             leftClick();*/
             Robot robot = new Robot();
 
@@ -71,7 +321,8 @@ public class MerchHelper {
             deletePic();
             pressEnter();
             leftClickLatestPicture();
-            pressOpen();
+            pressEnter();
+            //pressOpen();
             clickNextTab(shirts);
             //vänsterklicka på den senaste bilden 349 225
             //klicka open 222 1056
@@ -85,10 +336,10 @@ public class MerchHelper {
                     if (shirts2 <= 24){
                     clickNextTab(shirts);
                         robot.mouseMove(1133,912);
-                        robot.delay(300);
+                        robot.delay(200;
                         leftClick();
                         robot.mouseMove(1434,1318);
-                        robot.delay(300);
+                        robot.delay(200;
                         leftClick();
             }*/
         }
@@ -99,45 +350,45 @@ public class MerchHelper {
 
     private static void deletePic() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(1000);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_DELETE);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_DELETE);
-        robot.delay(1000);
+        robot.delay(200);
     }
 
     private static void rightClickLastestPicture() throws AWTException {
         Robot robot = new Robot();
         robot.mouseMove(349, 225);
-        robot.delay(300);
+        robot.delay(200);
         rightClick();
     }
 
     private static void rightClick() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-        robot.delay(300);
+        robot.delay(200);
 
     }
 
     private static void leftClick() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.mousePress(InputEvent.BUTTON1_MASK);
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseRelease(InputEvent.BUTTON1_MASK);
-        robot.delay(300);
+        robot.delay(200);
     }
 
     private static void pressOpen() throws AWTException {
         Robot robot = new Robot();
         robot.mouseMove(1473, 899);
-        robot.delay(300);
+        robot.delay(200);
         leftClick();
-        robot.delay(300);
+        robot.delay(200);
     }
 
     private static void clickNextTab(int shirts) throws AWTException {
@@ -200,35 +451,14 @@ public class MerchHelper {
                     case 19: robot.mouseMove(2022, 24);
                         leftClick();
                         break;
-                    case 20: robot.mouseMove(2322, 24);
-                        leftClick();
-                        break;
-                    case 21: robot.mouseMove(2422, 24);
-                        leftClick();
-                        break;
-                    case 22: robot.mouseMove(2522, 24);
-                        leftClick();
-                        break;
-                    case 23: robot.mouseMove(2622, 24);
-                        leftClick();
-                        break;
-                    case 24: robot.mouseMove(2722, 24);
-                        leftClick();
-                        break;
-                    case 25: robot.mouseMove(2822, 24);
-                        leftClick();
-                        break;
-                    case 26: robot.mouseMove(2922, 24);
-                        leftClick();
-                        break;
                 }
             }
 
     private static void leftClickLatestPicture() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseMove(349, 225);
-        robot.delay(300);
+        robot.delay(200);
         leftClick();
 
     }
@@ -236,15 +466,15 @@ public class MerchHelper {
     private static void pressUploadButton() throws AWTException {
         Robot robot = new Robot();
         robot.mouseMove(695, 1376);
-        robot.delay(300);
+        robot.delay(200);
         robot.mousePress(InputEvent.BUTTON1_MASK);
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseRelease(InputEvent.BUTTON1_MASK);
-        robot.delay(300);
+        robot.delay(200);
 
     }
 
-    private static void gatherTees() throws AWTException, InterruptedException, IOException {
+    private static void gatherTees(int lineNumber) throws AWTException, InterruptedException, IOException {
 
         //Fråga 1: hur många nyckelord. skriv ett eller flera "sökord" tex "coffee". skriv "done" när klar.
             /*List<String> nyckelOrd = new ArrayList<String>();
@@ -261,17 +491,18 @@ public class MerchHelper {
                 nyckelOrd.add(sokOrd);
         }*/
         //Fråga 2: hur många tröjor skall laddas ner för varje nyckelord?.
-        Scanner hurMangaTrojor = new Scanner(System.in);  // Reading from System.in
-        System.out.println("Hur många tröjor för varje nyckelord?");
-        int trojor = hurMangaTrojor.nextInt();
+        //Scanner hurMangaTrojor = new Scanner(System.in);  // Reading from System.in
+        //System.out.println("Hur många tröjor för varje nyckelord?");
+        //int trojor = hurMangaTrojor.nextInt();
         Robot robot = new Robot();
-        FileReader file = new FileReader("C:\\Users\\Swagmaster\\Desktop\\AMAZON MERCH\\Tees.txt");
-        BufferedReader reader = new BufferedReader(file);
-        String text = "";
-        String line = reader.readLine();
-        pressSpreadShirtSearch();
+        //FileReader file = new FileReader("C:\\Users\\Swagmaster\\Desktop\\AMAZON MERCH\\Tees.txt");
+        //BufferedReader reader = new BufferedReader(file);
+        BufferedReader br = new BufferedReader (new FileReader ("C:\\\\Users\\\\Swagmaster\\\\Desktop\\\\AMAZON MERCH\\\\Tees.txt"));
+        String line;
         //sök baserat på 1:a input(sökordet) från användaren
-        while ((reader.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
+               int trojor = 15;
+            pressSpreadShirtSearch();
             //int length = characters.length();
             for (int i = 0; i < line.length(); i++) {
                 robot.delay(20);
@@ -279,78 +510,83 @@ public class MerchHelper {
                 GetCharacter(character);
                 robot.delay(50);
             }
+            int movedown = 0;
+
+            pressEnter();
+            while (trojor > 0) {
+                //öppna och spara första tröjan
+                robot.delay(3000);
+                openshirt1();
+                trojor--;
+                //repetera process för nästa tröja, repetera x antal gånger
+                robot.delay(3000);
+                openshirt2();
+                robot.delay(3000);
+                trojor--;
+                openshirt3();
+                robot.delay(3000);
+                trojor--;
+                movedown++;
+                movedown(movedown);
+                robot.delay(3000);
+            }
+                    spreadShirtHomePage();
         }
-
-
             /*Iterator<String> iterator = nyckelOrd.iterator();
             while (iterator.hasNext()) {
             for (int i = 0; i < nyckelOrd.size(); i++) {
                 char character = nyckelOrd.indexOf(i);
                 GetCharacter(character);
             }*/
-
         //tryck enter
 
-        int movedown = 0;
-
-        pressEnter();
-
-        while (trojor > 0) {
-            //öppna och spara första tröjan
-            robot.delay(3000);
-            openshirt1();
-            trojor--;
-            //repetera process för nästa tröja, repetera x antal gånger
-            robot.delay(3000);
-            openshirt2();
-            robot.delay(3000);
-            trojor--;
-            openshirt3();
-            robot.delay(3000);
-            trojor--;
-            movedown++;
-            movedown(movedown);
-            robot.delay(3000);
-        }
     }
+
+    private static void spreadShirtHomePage() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(200);
+        robot.mouseMove(1268, 227);
+        robot.delay(200);
+        leftClick();
+        }
 
     private static void movedown(int movedown) throws AWTException {
             Robot robot = new Robot();
             switch (movedown){
                 case 1: robot.mouseMove(2543, 232);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 2: robot.mouseMove(2543, 285);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 3: robot.mouseMove(2545, 333);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 4: robot.mouseMove(2551, 388);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 5: robot.mouseMove(2545, 333);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 6: robot.mouseMove(2545, 432);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 7: robot.mouseMove(2545, 485);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 8: robot.mouseMove(2545, 538);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
                 case 9: robot.mouseMove(2545, 581);
-                robot.delay(300);
+                robot.delay(200);
                 leftClick();
                     break;
             }
@@ -366,13 +602,13 @@ public class MerchHelper {
         //tryck på x för att kryssa ner tab 1
         //tryck på x igen för att kryssa ner tab 2
         Robot robot = new Robot();
-        robot.delay(300);
-        robot.mouseMove(2136, 765);
-        robot.delay(300);
+        robot.delay(200);
+        robot.mouseMove(2136, 812);
+        robot.delay(200);
         rightClick();
-        robot.delay(300);
-        robot.mouseMove(2251, 788);
-        robot.delay(300);
+        robot.delay(200);
+        robot.mouseMove(2208, 835);
+        robot.delay(200);
         leftClick();
         robot.mouseMove(444, 20);
         leftClick();
@@ -398,28 +634,28 @@ public class MerchHelper {
 
     private static void ctrlF() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_F);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_F);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
     }
 
     private static void ctrlU() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_U);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_U);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
     }
 
     private static void openshirt2() throws AWTException {
@@ -431,13 +667,13 @@ public class MerchHelper {
         //tryck på x för att kryssa ner tab 1
         //tryck på x igen för att kryssa ner tab 2
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseMove(1533, 812);
-        robot.delay(300);
+        robot.delay(200);
         rightClick();
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseMove(1660, 837);
-        robot.delay(300);
+        robot.delay(200);
         leftClick();
         robot.mouseMove(444, 20);
         leftClick();
@@ -471,13 +707,13 @@ public class MerchHelper {
         //tryck på x för att kryssa ner tab 1
         //tryck på x igen för att kryssa ner tab 2
         Robot robot = new Robot();
-        robot.delay(300);
-        robot.mouseMove(978, 777);
-        robot.delay(300);
+        robot.delay(200);
+        robot.mouseMove(971, 793);
+        robot.delay(200);
         rightClick();
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseMove(1065, 801);
-        robot.delay(300);
+        robot.delay(200);
         leftClick();
         robot.mouseMove(444, 20);
         leftClick();
@@ -504,62 +740,62 @@ public class MerchHelper {
     private static void pressSpreadShirtSearch() throws AWTException {
         Robot robot = new Robot();
         robot.mouseMove(1586, 285);
-        robot.delay(300);
+        robot.delay(200);
         robot.mousePress(InputEvent.BUTTON1_MASK);
-        robot.delay(300);
+        robot.delay(200);
         robot.mouseRelease(InputEvent.BUTTON1_MASK);
-        robot.delay(300);
+        robot.delay(200);
     }
 
     private static void pressEnter() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(1000);
+        robot.delay(200);
 
     }
 
     private static void pastelink() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_V);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_V);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
 
     }
 
     private static void copyLink() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_C);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_C);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
 
     }
 
     private static void openTab() throws AWTException {
         Robot robot = new Robot();
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyPress(KeyEvent.VK_T);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_T);
-        robot.delay(300);
+        robot.delay(200);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.delay(200);
 
 
     }
